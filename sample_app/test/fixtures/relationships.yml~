@@ -1,0 +1,6 @@
+one:
+  follower: test2
+  followed: lana
+two:
+  follower: test2
+  followed: mallory

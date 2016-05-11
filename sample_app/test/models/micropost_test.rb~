@@ -1,0 +1,32 @@
+require 'test_helper'
+
+class MicropostTest < ActiveSupport::TestCase
+
+  def setup
+    @user = users(:test2)
+    @micropost = @user.microposts.build(content: "Lorem ipsum")
+  end
+
+  test "should be valid" do
+    assert @micropost.valid?  # 正しいデータの時、バリデーションがtrueを返却することを確認
+  end
+
+  test "user id should be present" do
+    @micropost.user_id = nil
+    assert_not @micropost.valid?  # user_idがnilの時、バリデーションがfalseを返却することを確認
+  end
+
+  test "content should be present" do
+    @micropost.content = " "
+    assert_not @micropost.valid?  # contentが空の時、バリデーションがfalseを返却することを確認
+  end
+
+  test "content should be at most 140 characters" do
+    @micropost.content = "a" * 141
+    assert_not @micropost.valid?  # 140文字を超える文字数の時、バリデーションがfalseを返却することを確認
+  end
+
+  test "order should be most recent first" do
+    assert_equal microposts(:most_recent), Micropost.first  # 最初のポストとユーザーのポスト(fixtureのポスト)が同じであることを確認
+  end
+end

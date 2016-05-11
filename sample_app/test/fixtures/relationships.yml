@@ -1,0 +1,12 @@
+one:
+  follower: test2
+  followed: lana
+two:
+  follower: test2
+  followed: mallory
+three:
+  follower: lana
+  followed: test2
+four:
+  follower: archer
+  followed: test2

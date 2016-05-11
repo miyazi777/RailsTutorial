@@ -1,0 +1,7 @@
+<h1>Sample App</h1>
+
+<p>H1 <%= @user.name %>,</p>
+
+<p>
+  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+</p>
